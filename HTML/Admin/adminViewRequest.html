@@ -11,6 +11,7 @@
 <body>
   <h1>Admin View Request</h1>
   <p>Please select which requests you would like to view</p>
+  <p>You may choose approved, pending, or denied</p>
   <form action = "/action_page.php">
     <label for = "status"> Choose a status: </label>
       <select name = "status" id = "status">
@@ -20,46 +21,54 @@
       </select>
       <br><br>
   </form>
-  <button type = "button" onclick = "adminMenu()"> Back to Admin Menu </button>
+  <button type = "button" onclick = "getTasksForUser(); clearAll()" > Get tasks of current status</button>
+  <button type = "button" onclick = "adminMenu(); clearAll()"> Back to Admin Menu </button>
+
+  <div id = "taskList">
+  </div>
 </body>
 
 
 <script>
-  //make API call for tasks                   fetch api
-  (async function getTasksForUser() {
-      let userId = window.localStorage.getItem('userID');
+  console.log(status);
+  //make API call for tasks
+  async function getTasksForUser() {
+    status = document.getElementById("status").value;
       
-      //url is a server location
-      let url = 'http://localhost:8080/P1/task';            //hardcoded in example
-      let response = await fetch(url, {
-          method: 'GET',
-          headers: {
-              'Content-Type': 'application/json;charset=utf-8'
-          },
-      });
+    //url is a server location
+    let url = 'http://localhost:8080/P1/task';
+    let response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+    });
       
-      //parse the json in the response
-      let array = await response.json();
+    //parse the json in the response
+    let array = await response.json();
       
-      //get the element where we will place our content
-      let htmlElement = document.getElementById('taskList');
+    //get the element where we will place our content
+    let htmlElement = document.getElementById('taskList');
       
-      
-      for(let i = 0; i < array.length; i++) {
-          let task = array[i];
-          console.log(task);
-        if (task.reimbursed == status) {
-          //insert the data into the web page
-          htmlElement.innerHTML += "<h4> Title: " + task.title + "</h4> <br>";
-          htmlElement.innerHTML += "<p> Message: " + task.message + "</p>";
-          htmlElement.innerHTML += "<p> Amount: " + task.amount + "</p>";
-          htmlElement.innerHTML += "<p> Reimbursed: " + task.reimbursed + "</p>";
-          htmlElement.innerHTML += "<p> RequestId: " + task.taskId + "</p>";
-          htmlElement.innerHTML += "<p> UserId: " + task.userId + "</p><br><br>";
-        }
+    for(let i = 0; i < array.length; i++) {
+        let task = array[i];
+
+      if (task.reimbursed == status) {
+        //insert the data into the web page
+        htmlElement.innerHTML += "<h4> Title: " + task.title + "</h4> <br>";
+        htmlElement.innerHTML += "<p> Message: " + task.message + "</p>";
+        htmlElement.innerHTML += "<p> Amount: " + task.amount + "</p>";
+        htmlElement.innerHTML += "<p> Reimbursed: " + task.reimbursed + "</p>";
+        htmlElement.innerHTML += "<p> RequestId: " + task.taskId + "</p>";
+        htmlElement.innerHTML += "<p> UserId: " + task.userId + "</p><br><br>";
       }
-      
-  })();
+    }
+  }
+
+  async function clearAll() {
+        let clear = document.getElementById("taskList");
+        clear.innerHTML = "";
+  }
       
   //return to user menu
   async function adminMenu() {

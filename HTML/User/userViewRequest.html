@@ -12,7 +12,7 @@
     <p>Here is a list of all requests made by the user</p><br>
     <button type = "button" onclick = "userMenu()"> Back to User Menu </button>
 
-    <div id="taskList">
+    <div id = "taskList">
     </div>
 
 </body> 
@@ -41,7 +41,6 @@
 
     for(let i = 0; i < array.length; i++) {
         let task = array[i];
-        console.log(task);
 
         //insert the data into the web page
         htmlElement.innerHTML += "<h4> Title: " + task.title + "</h4> <br>";
@@ -60,8 +59,3 @@ async function userMenu() {
 }
 </script>
 </html>
-
-
-<!-- if (task.reimbursed == textvar) {
-
-} -->

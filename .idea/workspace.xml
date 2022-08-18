@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7a686a3-999c-418f-bdca-b4ce8618b551" name="Changes" comment="" />
+    <list default="true" id="b7a686a3-999c-418f-bdca-b4ce8618b551" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/Admin/adminUpdateRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/Admin/adminUpdateRequest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/Admin/adminViewRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/Admin/adminViewRequest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/User/userDeleteRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/User/userDeleteRequest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/User/userMakeRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/User/userMakeRequest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HTML/User/userViewRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/User/userViewRequest.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +24,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/com/Services/DatasourceService.java" root0="FORCE_HIGHLIGHTING" />
@@ -30,6 +41,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Cu5sDRU8hduYbe8iJewOpS5K3O" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

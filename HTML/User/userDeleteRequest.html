@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>User Commands Menu</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Commands Menu</title>
+</head>
 
-    <body>
-        <h1>Delete Request Menu</h1>
-        <p>Please enter the Request ID of the Request you would like to delete</p>
-        RequestID: <input type = "number" id = "taskid"><br>
-        <button type = "button" onclick = "deleteRequest()" > Delete Request </buttton> <br>
-        <button type = "button" onclick = "userMenu()"> Back to User Menu </button>
-    </body>
+<body>
+    <h1>Delete Request Menu</h1>
+    <p>Please enter the Request ID of the Request you would like to delete</p>
+    RequestID: <input type = "number" id = "taskid"><br>
+    <button type = "button" onclick = "deleteRequest()" > Delete Request </button> <br>
+    <button type = "button" onclick = "userMenu()"> Back to User Menu </button>
+</body>
 
-   <script>
-
+<script>
     async function deleteRequest() {
-    let taskid = document.getElementById("taskid").value
+        let taskid = document.getElementById("taskid").value
 
-    //url is a server location
-    let url = 'http://localhost:8080/P1/task?task-id=' + taskid;
-    let response = await fetch(url, {
-         method: 'DELETE',
-         headers: {
+        //url is a server location
+        let url = 'http://localhost:8080/P1/task?task-id=' + taskid;
+        let response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
             'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify(taskid)
+            },
+    body: JSON.stringify(taskid)
     });
 
     if(response.status == 200) {
