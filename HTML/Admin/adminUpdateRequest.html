@@ -16,13 +16,15 @@
     <form action = "/action_page.php">
         <label for = "status"> Choose a status: </label>
           <select name = "status" id = "status">
-            <option value = "pending"> Approved </option>
+            <option value = "approved"> Approved </option>
             <option value = "denied"> Denied </option>
           </select>
           <br>
       </form>    
     <button type = "button" onclick = "getUpdateParameters(); updateRequestStatus()"> Submit updated status</button> <br>
     <button type = "button" onclick = "adminMenu()"> Back to Admin Menu </button>
+    <div id = "taskList">
+    </div>
 </body>
 
 <script>
@@ -34,33 +36,35 @@
         let response = await fetch( url, {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json;charset-utf-8'
+                'Content-Type': 'application/json;charset=utf-8'
             }
         });
 
         //parse the json in the response
-        let task = await response.json();
+        let array = await response.json();
 
-        window.localStorage.setItem('task', task)
-
-        let htmlElement = document.getElementById("request");
-
-        //duplicate paramaters to send back in update
-    }
+        //get request param from json and store in local storage for later
+        window.localStorage.setItem('title', array.title);
+        window.localStorage.setItem('message', array.message);
+        window.localStorage.setItem('amount', array.amount);
+        window.localStorage.setItem('reimbursed', document.getElementById("status").value);
+        window.localStorage.setItem('taskId', array.taskId);
+        window.localStorage.setItem('userId', array.userId);
+    };
 
     async function updateRequestStatus() {
         let requestId = document.getElementById("requestId").value;
-        let status = document.getElementById("status").value;
-        let task = window.localStorage.getItem("task");     //retrieve task json from local storage
+        //now is later
 
         let request = {
-            title: task.title.value,
-            message: task.message.value,
-            userId: task.userId.value,
-            taskId: task.taskId.value,
-            amount: task.amount.value,
-            reimbursed: status.value,
+            title: window.localStorage.getItem('title'),
+            message: window.localStorage.getItem('message'),
+            amount: window.localStorage.getItem('amount'),
+            reimbursed: document.getElementById("status").value,
+            userId: window.localStorage.getItem('userId'),
+            taskId: window.localStorage.getItem("taskId")
         }
+        console.log(request)
 
 
 
