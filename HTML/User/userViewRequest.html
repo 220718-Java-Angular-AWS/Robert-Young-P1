@@ -19,12 +19,12 @@
 
 
 <script>
-//make API call for tasks                   fetch api
+//make API call for tasks
 (async function getTasksForUser() {
     let userId = window.localStorage.getItem('userID');
 
     //url is a server location
-    let url = 'http://localhost:8080/P1/task?user-id=' + userId;            //hardcoded in example
+    let url = 'http://localhost:8080/P1/task?user-id=' + userId;
     let response = await fetch(url, {
         method: 'GET',
         headers: {

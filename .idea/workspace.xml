@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7a686a3-999c-418f-bdca-b4ce8618b551" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HTML/Admin/adminUpdateRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/Admin/adminUpdateRequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTML/Admin/adminViewRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/Admin/adminViewRequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTML/User/userDeleteRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/User/userDeleteRequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTML/User/userMakeRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/User/userMakeRequest.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HTML/User/userViewRequest.html" beforeDir="false" afterPath="$PROJECT_DIR$/HTML/User/userViewRequest.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,6 +117,17 @@
       <updated>1659639834909</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

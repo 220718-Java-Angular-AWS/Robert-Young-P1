@@ -18,7 +18,7 @@
 //make API call for tasks                   fetch api
 (async function getTaskForUser(userId) {
     //url is a server location
-    let url = 'http://localhost:8080/P1/task?user-id=' + userId;            //hardcoded in example
+    let url = 'http://localhost:8080/P1/task?user-id=' + userId;  //hardcoded in example
     let response = await fetch(url, {
         method: 'GET',
         headers: {
