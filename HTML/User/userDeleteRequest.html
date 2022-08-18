@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Commands Menu</title>
+    </head>
+
+    <body>
+        <h1>Delete Request Menu</h1>
+        <p>Please enter the Request ID of the Request you would like to delete</p>
+        RequestID: <input type = "number" id = "taskid"><br>
+        <button type = "button" onclick = "deleteRequest()" > Delete Request </buttton> <br>
+        <button type = "button" onclick = "userMenu()"> Back to User Menu </button>
+    </body>
+
+   <script>
+
+    async function deleteRequest() {
+    let taskid = document.getElementById("taskid").value
+
+    //url is a server location
+    let url = 'http://localhost:8080/P1/task?task-id=' + taskid;
+    let response = await fetch(url, {
+         method: 'DELETE',
+         headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(taskid)
+    });
+
+    if(response.status == 200) {
+        alert("Success! Request has been deleted!");
+    } else {
+        alert("Something went wrong!");
+    }
+    }
+
+    async function userMenu() {
+        location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/User/userCommands.html';
+    }
+
+    //stops the resluts from being ran multiple times
+    async function clearAll() {
+        let clear = document.getElementById("requestList");
+        clear.innerHTML = "";
+        //need to invoke function after the click
+        //<button type = "button" onclick = "userMenu(); clearAll()"> back to User Menu </button>
+     }
+</script>

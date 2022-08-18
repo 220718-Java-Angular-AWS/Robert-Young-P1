@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Controll Menu</title>
+    </head>
+
+    <body>
+        <h1>Admin Controll Menu</h1>
+        <p>Please select which option you would like to do</p>
+        <button type = "button" onclick = "viewRequest()"> View Requests </button>
+        <button type = "button" onclick = "updateRequest()"> Update Requests </button>
+        <button type = "button" onclick = "changeStatus()"> Change Admin Status</button>
+        <button type = "button" onclick = "userMenu()"> Go to user menu</button>
+    </body>
+
+    <script>
+async function viewRequest() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/Admin/adminViewRequest.html';
+}
+async function updateRequest() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/Admin/adminUpdateRequest.html';
+}
+async function changeStatus() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/Admin/adminChangeStatus.html';
+}
+async function userMenu() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/User/userCommands.html';
+}
+    </script>
+    </html>

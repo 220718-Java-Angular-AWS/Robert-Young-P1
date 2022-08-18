@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <h1>Log in</h1>
+    <p>Please enter a valid username and password to log in</p>
+    <p>or click new user to make an account</p>
+    <label>Username: </label>
+    <input type = "text" id = "username" name = "username" />
+    <br>
+    <label>Password: </label>
+    <input type = "password" id = "password" name = "password" />
+    <button type = "button" onclick = "logIn()"> Login </button>
+    <button type = "button" onclick = "newUser()"> New User</button>
+</body>
+<script>
+    async function logIn() {
+        let userLogin = {
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+        }
+        let url = 'http://localhost:8080/P1/auth';
+
+        let response = await fetch(url, {
+            //this code block is all the second parameter for fetch()
+            method: 'POST',
+            credantials: 'include',
+            headers:{
+                'Content-type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(userLogin)
+        });
+        let authenticatedUser = await response.json();
+
+        window.localStorage.setItem('userID', authenticatedUser.userId)
+        window.localStorage.setItem('admin', authenticatedUser.admin)
+        
+        if (authenticatedUser.admin == true) {
+            alert("success");
+            location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/Admin/adminCommands.html';
+        } else if (authenticatedUser.admin == false){
+            alert("success");
+            location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/User/userCommands.html';
+        } else {
+            alert("Something went wrong. Please make sure you are entering a valid username and password.");
+        }
+
+    }
+    async function newUser() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/User/userNewUserForm.html';
+}
+</script>
+</html>

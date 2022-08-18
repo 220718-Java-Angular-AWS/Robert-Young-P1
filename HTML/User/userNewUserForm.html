@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charst = "UTF-8">
+    <meta http-equiv="X-UA-Compativle" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title> Document</title>
+</head>
+
+<body>
+    <h1>New User Form</h1>
+    First Name: <input type="text" id="firstName"><br>
+    Last Name: <input type="text" id="lastName"><br>
+    Username: <input type="text" id="username"><br>
+    Email: <input type="text" id="email"><br>
+    Password: <input type="password" id="password"><br>
+    <button type="button" onclick="getTaskForUser()">Add New User</button><br>
+    <button type = "button" onclick = "userMenu()"> Back to User Menu </button>
+</body>
+
+<script>
+    async function getTaskForUser() {
+        let user = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            username: document.getElementById("username").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value
+        }
+
+        //url is a server location
+        let url = 'http://localhost:8080/P1/user';
+        let response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(user)
+        });
+
+        if(response.status == 200) {
+            alert("Success!");
+            location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/Login.html';
+        } else {
+            alert("Something went wrong!");
+        }
+    }
+
+    async function userMenu() {
+        location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/User/userCommands.html';
+    }
+    
+</script>
+</html>

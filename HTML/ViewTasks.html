@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charst = "UTF-8">
+    <meta http-equiv="X-UA-Compativle" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title> View Tasks</title>
+</head>
+
+<body>
+    <div id="taskList">
+    </div>
+
+</body> 
+
+
+<script>
+//make API call for tasks                   fetch api
+(async function getTaskForUser(userId) {
+    //url is a server location
+    let url = 'http://localhost:8080/P1/task?user-id=' + userId;            //hardcoded in example
+    let response = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+    });
+
+    //parse the json in the response
+    let array = await response.json();
+    console.log("A: ", array);
+
+    //get the element where we will place our content
+    let htmlElement = document.getElementById('taskList');
+
+
+    for(let i = 0; i < array.length; i++) {
+
+        let task = array[i];
+        //insert the data into the web page
+        htmlElement.innerHTML += "<h4> Title: " + task.title + "</h4> <br>";
+        htmlElement.innerHTML += "<p> Message: " + task.message + "</p>";
+        htmlElement.innerHTML += "<p> Amount: " + task.amount + "</p>";
+        htmlElement.innerHTML += "<p> Reimbursed: " + task.reimbursed + "</p>";
+        htmlElement.innerHTML += "<p> UserId: " + task.userId + "</p><br><br>";
+
+    }
+})(1);              //hard coded userId
+
+</script>
+</html>

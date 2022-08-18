@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin View Request</title>
+</head>
+
+<body>
+  <h1>Admin View Request</h1>
+  <p>Please select which requests you would like to view</p>
+  <form action = "/action_page.php">
+    <label for = "status"> Choose a status: </label>
+      <select name = "status" id = "status">
+        <option value = "pending"> Pending </option>
+        <option value = "denied"> Denied </option>
+        <option value = "approved"> Approved </option>
+      </select>
+      <br><br>
+  </form>
+  <button type = "button" onclick = "adminMenu()"> Back to Admin Menu </button>
+</body>
+
+
+<script>
+  //make API call for tasks                   fetch api
+  (async function getTasksForUser() {
+      let userId = window.localStorage.getItem('userID');
+      
+      //url is a server location
+      let url = 'http://localhost:8080/P1/task';            //hardcoded in example
+      let response = await fetch(url, {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+          },
+      });
+      
+      //parse the json in the response
+      let array = await response.json();
+      
+      //get the element where we will place our content
+      let htmlElement = document.getElementById('taskList');
+      
+      
+      for(let i = 0; i < array.length; i++) {
+          let task = array[i];
+          console.log(task);
+        if (task.reimbursed == status) {
+          //insert the data into the web page
+          htmlElement.innerHTML += "<h4> Title: " + task.title + "</h4> <br>";
+          htmlElement.innerHTML += "<p> Message: " + task.message + "</p>";
+          htmlElement.innerHTML += "<p> Amount: " + task.amount + "</p>";
+          htmlElement.innerHTML += "<p> Reimbursed: " + task.reimbursed + "</p>";
+          htmlElement.innerHTML += "<p> RequestId: " + task.taskId + "</p>";
+          htmlElement.innerHTML += "<p> UserId: " + task.userId + "</p><br><br>";
+        }
+      }
+      
+  })();
+      
+  //return to user menu
+  async function adminMenu() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/Admin/adminCommands.html';
+  }
+</script>

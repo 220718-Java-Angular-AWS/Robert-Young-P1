@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <meta charst = "UTF-8">
+    <meta http-equiv="X-UA-Compativle" content = "IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title> Document</title>
+</head>
+
+<body>
+    <h1>New Request Form</h1>
+    Title: <input type="text" id="title"><br>
+    Description: <input type="text" id="message"><br>
+    Amount to be Reimbursed: <input type="text" id="amount"><br>
+    <button type="button" onclick="makeReinbursement()"> Submit Reinbursement</button> <br>
+    <button type = "button" onclick = "userMenu()"> Back to User Menu </button>
+</body>
+
+<script>
+    userid = window.localStorage.getItem('userID');
+
+    async function makeReinbursement() {
+        let request = {
+            title: document.getElementById("title").value,
+            message: document.getElementById("message").value,
+            amount: document.getElementById("amount").value,
+            userId: window.localStorage.getItem('userID')
+        }
+
+        //url is a server location
+        let url = 'http://localhost:8080/P1/task?user-id=' + userid;
+        let response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(request)
+        });
+
+        if(response.status == 200) {
+            alert("Success! Request has been made!");
+        } else {
+            alert("Something went wrong!");
+        }
+    }
+    
+    async function userMenu() {
+        location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/User/userCommands.html';
+    }
+</script>
+</html>

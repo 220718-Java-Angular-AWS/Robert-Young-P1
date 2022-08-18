@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Commands Menu</title>
+    </head>
+
+    <body>
+        <button type = "button" onclick = "makeRequest()"> Make Request </button><br>
+        <button type = "button" onclick = "deleteRequest()"> Delete Requests </button><br>
+        <button type = "button" onclick = "viewRequest()"> View Requests </button><br>
+        <button type = "button" onclick = "updateRequest()"> Update Requests </button><br>
+        <button type = "button" onclick = "logOut()"> Log out of account </button><br>
+
+        <div id = "adminButton"></div>
+    </body>
+
+    <script>
+        let status = window.localStorage.getItem('admin');
+        if (status == "true") {
+            let button = document.getElementById("adminButton")
+            button.innerHTML = "<button type = 'button' onclick = 'adminMenu()'> Admin Menu </button>"
+        }
+
+async function makeRequest() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/User/userMakeRequest.html';
+}
+async function viewRequest() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/User/userViewRequest.html';
+}
+async function updateRequest() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/User/userUpdateRequest.html';
+}
+async function deleteRequest() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/User/userDeleteRequest.html';
+}
+async function logOut() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/Login.html';
+}
+async function adminMenu() {
+    location.href = 'file:///C:/Users/bobby/Desktop/Revature/Java/P1/HTML/Admin/adminCommands.html';
+}
+    </script>
+</html>
